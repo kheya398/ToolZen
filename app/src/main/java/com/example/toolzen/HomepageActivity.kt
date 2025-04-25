@@ -2,13 +2,8 @@ package com.example.toolzen
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.LinearLayout
-import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class HomepageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,7 +15,7 @@ class HomepageActivity : AppCompatActivity() {
 
         qrview.setOnClickListener()
         {
-            var qrintent = Intent(this,QrscannerActivity::class.java)
+            var qrintent = Intent(this,QrgeneratorActivity::class.java)
             startActivity(qrintent)
         }
 

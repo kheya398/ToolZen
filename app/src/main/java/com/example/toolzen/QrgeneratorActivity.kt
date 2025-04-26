@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.view.View
@@ -41,6 +42,7 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
         btnSave.setOnClickListener(this)
         btnGenerateQR.setOnClickListener(this)
 
+        // Checking permission during initialization (optional, you can move this later)
         if (!checkPermissionForExternalStorage()) {
             requestPermissionForExternalStorage()
         }
@@ -56,12 +58,36 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.btn_save -> {
-                if (!checkPermissionForExternalStorage()) {
-                    Toast.makeText(this, "External storage permission needed", Toast.LENGTH_SHORT).show()
-                } else {
-                    qrImage?.let { saveImage(it) }
-                }
+                // Call checkPermissionAndSave instead of checking permission directly here
+                checkPermissionAndSave()
             }
+        }
+    }
+
+    private fun checkPermissionAndSave() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+                // If permission is granted, save the QR code
+                qrImage?.let { saveImage(it) }
+            } else {
+                // Request permission
+                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1001)
+            }
+        } else {
+            // For devices below Marshmallow, save the QR code directly
+            qrImage?.let { saveImage(it) }
+        }
+    }
+
+    // Override onRequestPermissionsResult
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1001 && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            // If permission granted, save the QR code
+            qrImage?.let { saveImage(it) }
+        } else {
+            // Permission denied, show toast
+            Toast.makeText(this, "Permission denied!", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -115,7 +141,7 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-     fun saveImage(image: Bitmap): String {
+    private fun saveImage(image: Bitmap): String {
         val imageFileName = "QR_${getTimestamp()}.jpg"
         val storageDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Info")
 

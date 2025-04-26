@@ -15,7 +15,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import net.glxn.qrgen.android.QRCode
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.qrcode.QRCodeWriter
 import java.io.File
 import java.io.FileOutputStream
 
@@ -35,7 +36,7 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
         btnSave = findViewById(R.id.btn_save)
         btnGenerateQR = findViewById(R.id.btn_generateqr)
         inputText = findViewById(R.id.input_text)
-        qrImageView = findViewById(R.id.grImage_qrCode)
+        qrImageView = findViewById(R.id.imageview_qrcode)
 
         btnSave.setOnClickListener(this)
         btnGenerateQR.setOnClickListener(this)
@@ -95,14 +96,26 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun generateQRCode() {
         val text = inputText.text.toString()
-        qrImage = QRCode.from(text).bitmap()
-        qrImage?.let {
-            qrImageView.setImageBitmap(it)
+        val writer = QRCodeWriter()
+        try {
+            val bitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, 512, 512)
+            val width = bitMatrix.width
+            val height = bitMatrix.height
+            val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565)
+            for (x in 0 until width) {
+                for (y in 0 until height) {
+                    bmp.setPixel(x, y, if (bitMatrix[x, y]) android.graphics.Color.BLACK else android.graphics.Color.WHITE)
+                }
+            }
+            qrImage = bmp
+            qrImageView.setImageBitmap(bmp)
             btnSave.visibility = View.VISIBLE
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
     }
 
-    private fun saveImage(image: Bitmap): String {
+     fun saveImage(image: Bitmap): String {
         val imageFileName = "QR_${getTimestamp()}.jpg"
         val storageDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), "Info")
 
@@ -126,7 +139,6 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
             sendBroadcast(mediaScanIntent)
 
             Toast.makeText(this, "QR Image saved to Info folder", Toast.LENGTH_SHORT).show()
-
         } catch (ex: Exception) {
             ex.printStackTrace()
             Toast.makeText(this, "Error saving image", Toast.LENGTH_SHORT).show()

@@ -15,6 +15,7 @@ constraintlayout = "2.1.4"
 filamentAndroid = "1.17.1"
 
 [libraries]
+zxing = { group = "com.journeyapps", name = "zxing-android-embedded", version = "4.3.0" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version="1.6.1"}
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

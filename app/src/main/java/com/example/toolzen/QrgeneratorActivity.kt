@@ -42,7 +42,7 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
         btnSave.setOnClickListener(this)
         btnGenerateQR.setOnClickListener(this)
 
-        // Checking permission during initialization (optional, you can move this later)
+       //external permission dawar jnno
         if (!checkPermissionForExternalStorage()) {
             requestPermissionForExternalStorage()
         }
@@ -58,7 +58,7 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
             R.id.btn_save -> {
-                // Call checkPermissionAndSave instead of checking permission directly here
+
                 checkPermissionAndSave()
             }
         }
@@ -67,26 +67,26 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
     private fun checkPermissionAndSave() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-                // If permission is granted, save the QR code
+
                 qrImage?.let { saveImage(it) }
             } else {
-                // Request permission
+
                 requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1001)
             }
         } else {
-            // For devices below Marshmallow, save the QR code directly
+
             qrImage?.let { saveImage(it) }
         }
     }
 
-    // Override onRequestPermissionsResult
+
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1001 && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            // If permission granted, save the QR code
+
             qrImage?.let { saveImage(it) }
         } else {
-            // Permission denied, show toast
+
             Toast.makeText(this, "Permission denied!", Toast.LENGTH_SHORT).show()
         }
     }

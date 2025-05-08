@@ -22,6 +22,12 @@ class WebsitesearchActivity : AppCompatActivity() {
         val gemini: ImageView = findViewById(R.id.geek)
         val flowchart: ImageView = findViewById(R.id.gimini)
         val google: ImageView = findViewById(R.id.goole)
+        val grok: ImageView = findViewById(R.id.grok)
+        val chatgpt: ImageView = findViewById(R.id.chatgpt)
+        val canva: ImageView = findViewById(R.id.canva)
+        val linkedin: ImageView = findViewById(R.id.linkedin)
+        val instagram: ImageView = findViewById(R.id.instagram)
+        val youtube: ImageView = findViewById(R.id.youtube)
 
 
         val urls = arrayOf(
@@ -30,7 +36,15 @@ class WebsitesearchActivity : AppCompatActivity() {
             "https://www.smartdraw.com",
             "https://www.geeksforgeeks.org",
             "https://gemini.google.com",
-            "https://www.google.com"
+            "https://www.google.com",
+            "https://grok.com",
+            "https://chatgpt.com",
+            "https://www.canva.com",
+            "https://linkedin.com",
+            "https://www.instagram.com",
+            "https://www.youtube.com/"
+
+
         )
 
 
@@ -56,6 +70,29 @@ class WebsitesearchActivity : AppCompatActivity() {
 
         google.setOnClickListener {
             openWebsite(urls[5])
+        }
+        grok.setOnClickListener {
+            openWebsite(urls[6])
+        }
+
+        chatgpt.setOnClickListener {
+            openWebsite(urls[7])
+        }
+
+        canva.setOnClickListener {
+            openWebsite(urls[8])
+        }
+
+        linkedin.setOnClickListener {
+            openWebsite(urls[9])
+        }
+
+        instagram.setOnClickListener {
+            openWebsite(urls[10])
+        }
+
+        youtube.setOnClickListener {
+            openWebsite(urls[11])
         }
 
 

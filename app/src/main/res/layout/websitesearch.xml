@@ -114,4 +114,38 @@
             app:srcCompat="@drawable/canva"  />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/fourthRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintTop_toBottomOf="@id/thirdRow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp">
+
+        <ImageView
+            android:id="@+id/linkedin"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            app:srcCompat="@drawable/linkedin"  />
+
+        <ImageView
+            android:id="@+id/instagram"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            app:srcCompat="@drawable/instagram"  />
+
+        <ImageView
+            android:id="@+id/youtube"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/youtube"  />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

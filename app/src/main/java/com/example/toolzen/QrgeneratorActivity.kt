@@ -42,7 +42,7 @@ class QrgeneratorActivity : AppCompatActivity(), View.OnClickListener {
         btnSave.setOnClickListener(this)
         btnGenerateQR.setOnClickListener(this)
 
-       //external permission dawar jnno
+
         if (!checkPermissionForExternalStorage()) {
             requestPermissionForExternalStorage()
         }

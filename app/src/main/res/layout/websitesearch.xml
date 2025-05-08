@@ -19,7 +19,7 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/facebook"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
@@ -27,7 +27,7 @@
             android:contentDescription="Facebook" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/fig"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
@@ -35,7 +35,7 @@
             android:contentDescription="Figma" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/flow"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
@@ -57,7 +57,7 @@
         android:layout_marginTop="20dp">
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/geek"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
@@ -65,7 +65,7 @@
             android:contentDescription="Facebook" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/gimini"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"
@@ -73,7 +73,7 @@
             android:contentDescription="Figma" />
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/goole"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_margin="8dp"

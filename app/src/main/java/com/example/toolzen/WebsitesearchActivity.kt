@@ -18,9 +18,9 @@ class WebsitesearchActivity : AppCompatActivity() {
 
         val fb: ImageView = findViewById(R.id.facebook)
         val figma: ImageView = findViewById(R.id.fig)
-        val geeks: ImageView = findViewById(R.id.geek)
-        val gemini: ImageView = findViewById(R.id.gimini)
-        val flowchart: ImageView = findViewById(R.id.flow)
+        val geeks: ImageView = findViewById(R.id.flow)
+        val gemini: ImageView = findViewById(R.id.geek)
+        val flowchart: ImageView = findViewById(R.id.gimini)
         val google: ImageView = findViewById(R.id.goole)
 
 

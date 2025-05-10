@@ -4,8 +4,9 @@
     <string name="enter_value">Enter value</string>
     <string name="convert">Convert</string>
     <string name="result">Result</string>
-    
+
     <string-array name="unit_types">
+        <item>Select item</item>
         <item>Kilometer</item>
         <item>Meter</item>
         <item>Centimeter</item>

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomepageActivity">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/qrlayout"
@@ -13,19 +13,18 @@
         android:layout_height="82dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="59dp"
-        android:layout_marginEnd="56dp"
-        android:background="#D774E7"
+        android:layout_marginEnd="8dp" android:background="#D774E7"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="65dp"
-            android:layout_height="58dp"
-            app:srcCompat="@drawable/qrcode" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_chainStyle="spread" > <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="65dp"
+        android:layout_height="58dp"
+        app:srcCompat="@drawable/qrcode" />
 
         <TextView
             android:id="@+id/textView"
@@ -39,22 +38,53 @@
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="158dp"
-        android:background="#D774E7"
+        android:layout_marginStart="8dp"  android:layout_marginEnd="8dp"    android:background="#D774E7"
         android:gravity="center_horizontal|center_vertical"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/qrlayout"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout2"
         app:layout_constraintStart_toEndOf="@+id/qrlayout"
         app:layout_constraintTop_toTopOf="@+id/qrlayout">
 
         <ImageView
             android:id="@+id/websiteview"
-            android:layout_width="105dp"
-            android:layout_height="100dp"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
             app:srcCompat="@drawable/websitelogo" />
 
+        <TextView
+            android:id="@+id/texWeb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Webview"
+            android:textColor="@color/black" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp" android:layout_marginEnd="25dp"
+        android:background="#D774E7"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="65dp"
+            android:layout_height="58dp"
+            app:srcCompat="@drawable/unitconverter" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Unit Converter"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

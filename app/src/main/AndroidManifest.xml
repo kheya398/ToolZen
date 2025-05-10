@@ -16,10 +16,13 @@
         android:theme="@style/Theme.AppCompat.Light"
         tools:targetApi="31">
         <activity
-            android:name=".WebsitesearchActivity"
+            android:name=".UnitConverterActivity"
             android:exported="false" />
         <activity
-            android:name=".UnitConverterActivity"
+            android:name=".UnitconverterActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".WebsitesearchActivity"
             android:exported="false" />
         <activity
             android:name=".QrgeneratorActivity"

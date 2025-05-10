@@ -12,18 +12,27 @@ class HomepageActivity : AppCompatActivity() {
         setContentView(R.layout.homepage)
 
         var qrview = findViewById<LinearLayout>(R.id.qrlayout)
+        var websitesearchid = findViewById<LinearLayout>(R.id.linearLayout)
+        var unitconverter = findViewById<LinearLayout>(R.id.linearLayout2)
+
+
+
         qrview.setOnClickListener()
         {
             var qrintent = Intent(this,QrgeneratorActivity::class.java)
             startActivity(qrintent)
         }
 
-
-        var websitesearchid = findViewById<LinearLayout>(R.id.linearLayout)
         websitesearchid.setOnClickListener()
         {
             var websiteintent = Intent(this,WebsitesearchActivity::class.java)
             startActivity(websiteintent)
+        }
+
+        unitconverter.setOnClickListener()
+        {
+            var unitconverterintent = Intent(this,UnitConverterActivity::class.java)
+            startActivity(unitconverterintent)
         }
 
 

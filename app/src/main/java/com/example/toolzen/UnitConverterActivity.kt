@@ -23,16 +23,15 @@ class UnitConverterActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.unit_converter)
 
-        // Initialize UI components
         fromUnitSpinner = findViewById(R.id.fromUnitSpinner)
         toUnitSpinner = findViewById(R.id.toUnitSpinner)
         unitInput = findViewById(R.id.unitInput)
         conversionResult = findViewById(R.id.conversionResult)
 
-        // Set up convert button
+
         findViewById<Button>(R.id.convertButton).setOnClickListener { convertUnits() }
 
-        // Set up spinners
+
         val adapter = ArrayAdapter.createFromResource(
             this,
             R.array.unit_types,

@@ -8,6 +8,7 @@ android {
     namespace = "com.example.toolzen"
     compileSdk = 35
 
+
     defaultConfig {
         applicationId = "com.example.toolzen"
         minSdk = 24
@@ -16,6 +17,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
     }
 
     buildTypes {

@@ -42,4 +42,5 @@ class HomepageActivity : AppCompatActivity() {
             startActivity(passwordganarate)
         }
     }
+
 }

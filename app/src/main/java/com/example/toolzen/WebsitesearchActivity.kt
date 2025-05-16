@@ -25,9 +25,7 @@ class WebsitesearchActivity : AppCompatActivity() {
         val grok: ImageView = findViewById(R.id.grok)
         val chatgpt: ImageView = findViewById(R.id.chatgpt)
         val canva: ImageView = findViewById(R.id.canva)
-        val linkedin: ImageView = findViewById(R.id.linkedin)
-        val instagram: ImageView = findViewById(R.id.instagram)
-        val youtube: ImageView = findViewById(R.id.youtube)
+
 
 
         val urls = arrayOf(
@@ -83,17 +81,7 @@ class WebsitesearchActivity : AppCompatActivity() {
             openWebsite(urls[8])
         }
 
-        linkedin.setOnClickListener {
-            openWebsite(urls[9])
-        }
 
-        instagram.setOnClickListener {
-            openWebsite(urls[10])
-        }
-
-        youtube.setOnClickListener {
-            openWebsite(urls[11])
-        }
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

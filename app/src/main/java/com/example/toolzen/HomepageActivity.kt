@@ -15,6 +15,8 @@ class HomepageActivity : AppCompatActivity() {
         var websitesearchid = findViewById<LinearLayout>(R.id.linearLayout)
         var unitconverter = findViewById<LinearLayout>(R.id.linearLayout2)
         var passwordgenerator = findViewById<LinearLayout>(R.id.linearLayout3)
+        var notepad = findViewById<LinearLayout>(R.id.linearLayout4)
+        var  imagecompressor= findViewById<LinearLayout>(R.id.linearLayout5)
 
 
         qrview.setOnClickListener()
@@ -40,6 +42,18 @@ class HomepageActivity : AppCompatActivity() {
         {
             var passwordganarate = Intent(this, PasswordgeneratorActivity::class.java)
             startActivity(passwordganarate)
+        }
+
+        notepad.setOnClickListener()
+        {
+            var Notepad = Intent(this, NotepadActivity::class.java)
+            startActivity(Notepad)
+        }
+
+        imagecompressor.setOnClickListener()
+        {
+            var imagecompresor = Intent(this, ImageCompressorActivity::class.java)
+            startActivity(imagecompresor)
         }
     }
 

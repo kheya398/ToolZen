@@ -31,16 +31,14 @@ class WebsitesearchActivity : AppCompatActivity() {
         val urls = arrayOf(
             "https://www.facebook.com",
             "https://www.figma.com",
-            "https://www.smartdraw.com",
+            "https://app.flowcv.com/resume/share",
             "https://www.geeksforgeeks.org",
             "https://gemini.google.com",
             "https://www.google.com",
             "https://grok.com",
             "https://chatgpt.com",
-            "https://www.canva.com",
-            "https://linkedin.com",
-            "https://www.instagram.com",
-            "https://www.youtube.com/"
+            "https://www.canva.com"
+
 
 
         )

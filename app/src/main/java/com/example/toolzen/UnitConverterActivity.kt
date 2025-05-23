@@ -1,88 +1,75 @@
 package com.example.toolzen
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import java.util.Locale
 
 class UnitConverterActivity : AppCompatActivity() {
 
+    private lateinit var unitInput: EditText
     private lateinit var fromUnitSpinner: Spinner
     private lateinit var toUnitSpinner: Spinner
-    private lateinit var unitInput: EditText
+    private lateinit var convertButton: Button
     private lateinit var conversionResult: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.unit_converter)
 
+        unitInput = findViewById(R.id.unitInput)
         fromUnitSpinner = findViewById(R.id.fromUnitSpinner)
         toUnitSpinner = findViewById(R.id.toUnitSpinner)
-        unitInput = findViewById(R.id.unitInput)
+        convertButton = findViewById(R.id.convertButton)
         conversionResult = findViewById(R.id.conversionResult)
 
+        val fromAdapter = ArrayAdapter.createFromResource(this, R.array.unit_types, android.R.layout.simple_spinner_item)
+        val toAdapter = ArrayAdapter.createFromResource(this, R.array.unit_types_to, android.R.layout.simple_spinner_item)
+        fromAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        toAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        fromUnitSpinner.adapter = fromAdapter
+        toUnitSpinner.adapter = toAdapter
 
-        findViewById<Button>(R.id.convertButton).setOnClickListener { convertUnits() }
+        convertButton.setOnClickListener {
+            val inputValue = unitInput.text.toString().toDoubleOrNull()
+            val fromUnit = fromUnitSpinner.selectedItem.toString()
+            val toUnit = toUnitSpinner.selectedItem.toString()
 
+            if (inputValue == null || fromUnit == "Select from" || toUnit == "Select to") {
+                conversionResult.text = "Please enter a valid value and select both units."
+                return@setOnClickListener
+            }
 
-        val adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.unit_types,
-            android.R.layout.simple_spinner_item
-        ).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
-        fromUnitSpinner.adapter = adapter
-        toUnitSpinner.adapter = adapter
-    }
-
-    private fun convertUnits() {
-        val fromUnit = fromUnitSpinner.selectedItem.toString()
-        val toUnit = toUnitSpinner.selectedItem.toString()
-        val inputText = unitInput.text.toString()
-
-        if (inputText.isEmpty()) {
-            Toast.makeText(this, "Please enter a value", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        try {
-            val inputValue = inputText.toDouble()
-            val convertedValue = convert(fromUnit, toUnit, inputValue)
-            conversionResult.text = String.format(Locale.getDefault(), "%.2f %s", convertedValue, toUnit)
-        } catch (e: NumberFormatException) {
-            Toast.makeText(this, "Please enter a valid number", Toast.LENGTH_SHORT).show()
+            val meterValue = convertToMeters(inputValue, fromUnit)
+            val finalValue = convertFromMeters(meterValue, toUnit)
+            conversionResult.text = "%.2f $fromUnit = %.2f $toUnit".format(inputValue, finalValue)
         }
     }
 
-    private fun convert(fromUnit: String, toUnit: String, value: Double): Double {
-        val conversionMap = mapOf(
-            "Kilometer" to 1000.0,
-            "Meter" to 1.0,
-            "Centimeter" to 0.01,
-            "Millimeter" to 0.001,
-            "Mile" to 1609.34,
-            "Yard" to 0.9144,
-            "Foot" to 0.3048,
-            "Inch" to 0.0254
-        )
-
-        val fromValue = conversionMap[fromUnit]
-        val toValue = conversionMap[toUnit]
-
-        if (fromValue == null || toValue == null) {
-            Toast.makeText(this, "Invalid unit selection", Toast.LENGTH_SHORT).show()
-            return 0.0
+    private fun convertToMeters(value: Double, unit: String): Double {
+        return when (unit) {
+            "Kilometer" -> value * 1000
+            "Meter" -> value
+            "Centimeter" -> value / 100
+            "Millimeter" -> value / 1000
+            "Miles" -> value * 1609.34
+            "Yards" -> value * 0.9144
+            "Feet" -> value * 0.3048
+            "Inch" -> value * 0.0254
+            else -> 0.0
         }
+    }
 
-        val valueInMeters = value * fromValue
-        return valueInMeters / toValue
+    private fun convertFromMeters(value: Double, unit: String): Double {
+        return when (unit) {
+            "Kilometer" -> value / 1000
+            "Meter" -> value
+            "Centimeter" -> value * 100
+            "Millimeter" -> value * 1000
+            "Miles" -> value / 1609.34
+            "Yards" -> value / 0.9144
+            "Feet" -> value / 0.3048
+            "Inch" -> value / 0.0254
+            else -> 0.0
+        }
     }
 }

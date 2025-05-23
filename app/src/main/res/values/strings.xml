@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">ToolZen</string>
-    <string name="unit_converter">unit converter</string>
+    <string name="unit_converter">Unit Converter</string>
     <string name="enter_value">Enter value</string>
     <string name="convert">Convert</string>
     <string name="result">Result</string>
 
     <string-array name="unit_types">
-        <item>Select item</item>
+        <item>Select from</item>
         <item>Kilometer</item>
         <item>Meter</item>
         <item>Centimeter</item>
@@ -15,6 +15,17 @@
         <item>Yards</item>
         <item>Feet</item>
         <item>Inch</item>
+    </string-array>
 
+    <string-array name="unit_types_to">
+        <item>Select to</item>
+        <item>Kilometer</item>
+        <item>Meter</item>
+        <item>Centimeter</item>
+        <item>Millimeter</item>
+        <item>Miles</item>
+        <item>Yards</item>
+        <item>Feet</item>
+        <item>Inch</item>
     </string-array>
 </resources>

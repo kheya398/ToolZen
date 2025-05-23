@@ -25,7 +25,7 @@ class PasswordgeneratorActivity : AppCompatActivity() {
         val generatePasswordButton = findViewById<Button>(R.id.generatePasswordButton)
         val tvGeneratePasswordText = findViewById<TextView>(R.id.tvGeneratePasswordText)
 
-        // Set click listener for the generate password button
+
         generatePasswordButton.setOnClickListener {
             val length = passwordLength.text.toString().toIntOrNull()
             if (length != null && length > 0) {
